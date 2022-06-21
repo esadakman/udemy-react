@@ -10,8 +10,12 @@ import { Container, Row, Col } from "reactstrap";
 function App() {
   // ! İstersek category ve product listimizi bir değişken içerisinde oluşturup, ordanda alabiliriz
   // * Bu değişkenleri okumak için ise direkt title'ın içine gidip {} içerisinde değiikenimizi çağırabiliriz
-  let titleProduct = "Product List";
-  let titleCategory = "Category List";
+  // let titleProduct = "Product List";
+  // let titleCategory = "Category List";
+  // ! Yeni bir özellik eklediğimizde başka bir değişken oluşturmak yerine aşağıda ki gibi encapsulation yöntemine başvururuz
+  let productInfo = { title: "ProductList", baskaBisey: "bisey" };
+  let categoryInfo = { title: "CategoryList" };
+
   return (
     <div>
       {/* <h2>Hello React !!! </h2> */}
@@ -25,11 +29,13 @@ function App() {
           <Col xs="3">
             {/* //* Datamızı taşımak datayı taşıyacağımız yere gelip title veririz. (title yerine başka bir isimde verebiliriz fakat diğer tarafta aynı isimle çağırmamız gerekir)  */}
             {/* <CategoryList title="Category List" /> */}
-            <CategoryList title={titleCategory} />
+            {/* <CategoryList title={titleCategory} /> */}
+            <CategoryList info={categoryInfo} />
           </Col>
           <Col xs="9">
             {/* <ProductList title="Product List" /> */}
-            <ProductList title={titleProduct} />
+            {/* <ProductList title={titleProduct} /> */}
+            <ProductList info={productInfo} />
           </Col>
         </Row>
       </Container>
