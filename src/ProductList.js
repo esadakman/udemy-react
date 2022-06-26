@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 // ! app.js'de encapsulation yöntemimizi uyguladıktan sonra burada divimizin içine girip {this.props.info.__değişkenismi__} şeklinde çağırıyoruz
 
 export default class ProductList extends Component {
@@ -7,7 +7,8 @@ export default class ProductList extends Component {
     return (
       <div>
         <h3>
-          {this.props.info.title}-{this.props.currentCategory}
+          {this.props.info.title}
+          {/* -{this.props.currentCategory} */}
         </h3>
 
         <Table>
@@ -18,6 +19,7 @@ export default class ProductList extends Component {
               <th>Units Price</th>
               <th>Quantity Per Unit</th>
               <th>Units in Stock</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -28,6 +30,15 @@ export default class ProductList extends Component {
                 <td>{product.unitPrice}</td>
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitsInStock}</td>
+                <td>
+                  <Button
+                    onClick={() => this.props.addToCart(product)}
+                    className="text-light"
+                    color="info"
+                  >
+                    Add to cart
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

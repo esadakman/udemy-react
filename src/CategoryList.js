@@ -36,6 +36,11 @@ export default class CategoryList extends Component {
           {/* //! yukarıda yazmış olduğumuz categories'im içerisinde ki bilgileri getirmek için */}
           {this.state.categories.map((category) => (
             <ListGroupItem
+              active={
+                category.categoryName === this.props.currentCategory
+                  ? true
+                  : false
+              }
               onClick={() => this.props.changeCategory(category)}
               key={category.id}
             >

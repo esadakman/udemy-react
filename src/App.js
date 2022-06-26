@@ -8,7 +8,7 @@ import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state = { currentCategory: "", products: [] };
+  state = { currentCategory: "", products: [], cart: [] };
 
   componentDidMount() {
     this.getProducts();
@@ -30,6 +30,17 @@ export default class App extends Component {
       .then((data) => this.setState({ products: data }));
   };
 
+  addToCart = (product) => {
+    let newCart = this.state.cart;
+    var addedItem = newCart.find((c) => c.product.id === product.id);
+    if (addedItem) {
+      addedItem.quantity++;
+    } else {
+      newCart.push({ product: product, quantity: 1 });
+    }
+    this.setState({ cart: newCart });
+  };
+
   render() {
     let productInfo = { title: "ProductList" };
     let categoryInfo = { title: "CategoryList" };
@@ -39,11 +50,10 @@ export default class App extends Component {
         {/* Navi'yi direkt <Navi /> şeklindede yazabilirim */}
         {/* <Navi></Navi> */}
         <Container>
+          <Navi cart={this.state.cart} />
+
           <Row>
-            <Navi />
-          </Row>
-          <Row>
-            <Col xs="4" role="button">
+            <Col xs="2" role="button">
               {/* //* Datamızı taşımak datayı taşıyacağımız yere gelip title veririz. (title yerine başka bir isimde verebiliriz fakat diğer tarafta aynı isimle çağırmamız gerekir)  */}
               {/* <CategoryList title="Category List" /> */}
               {/* <CategoryList title={titleCategory} /> */}
@@ -53,11 +63,12 @@ export default class App extends Component {
                 info={categoryInfo}
               />
             </Col>
-            <Col xs="8">
+            <Col xs="10">
               {/* <ProductList title="Product List" /> */}
               {/* <ProductList title={titleProduct} /> */}
               <ProductList
                 products={this.state.products}
+                addToCart={this.addToCart}
                 currentCategory={this.state.currentCategory}
                 info={productInfo}
               />
