@@ -1,7 +1,7 @@
 // ! rcc(snippet sayeyinde) komutuyla bir class componenti oluşturmuş olduk
 
 import React, { Component } from "react";
-
+import CartSummary from "./CartSummary";
 import {
   Collapse,
   Navbar,
@@ -10,10 +10,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 
 // ! export "Public" anlamına geliyor, yani diğer taraflardan erişilebilir
@@ -47,18 +43,10 @@ export default class Navi extends Component {
               <NavItem>
                 <NavLink href="/components/">Components</NavLink>
               </NavItem>
-
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options - {this.props.cart.length}
-                </DropdownToggle>
-                <DropdownMenu end>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <CartSummary
+                removeFromCart={this.props.removeFromCart}
+                cart={this.props.cart}
+              />
             </Nav>
           </Collapse>
         </Navbar>

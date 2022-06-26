@@ -25,3 +25,5 @@
 - son olarak ise db.josn dosyamızın olduğu konumda terminal açıp => "json-server --watch db.json" komutunu giriyoruz
 - api'miz 3000 portunda çalışıcağı için projemizden çıkıp yapı tekrardan başlatmamız gerekebilir.
 - apimizin çalıştığı "http://localhost:3000/" adresine gidip "/" koyup kategori isimlerimizi yazarak gerekli bilgilere ulaşabiliriz.
+
+- datanın bit component'den altına ve ordanda onun altına geçmesi işlemine "Componet Drilling" denir.
