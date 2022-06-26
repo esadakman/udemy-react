@@ -16,10 +16,16 @@ export default class App extends Component {
 
   changeCategory = (category) => {
     this.setState({ currentCategory: category.categoryName });
+    this.getProducts(category.id);
   };
 
-  getProducts = () => {
-    fetch("http://localhost:3000/products")
+  // ? categorilere tıklandığında o kategorinin ürünlerinin listelenmesi için öncelikle categoryListteki categoryId 'imizi kullandık. Fakat categoriye tıklayınca getProducts'ımızın yeniden çalışmadığı  için eventimizi yollamımız lazım
+  getProducts = (categoryId) => {
+    let url = "http://localhost:3000/products";
+    if (categoryId) {
+      url += "?categoryId=" + categoryId;
+    }
+    fetch(url)
       .then((response) => response.json())
       .then((data) => this.setState({ products: data }));
   };
@@ -37,7 +43,7 @@ export default class App extends Component {
             <Navi />
           </Row>
           <Row>
-            <Col xs="4">
+            <Col xs="4" role="button">
               {/* //* Datamızı taşımak datayı taşıyacağımız yere gelip title veririz. (title yerine başka bir isimde verebiliriz fakat diğer tarafta aynı isimle çağırmamız gerekir)  */}
               {/* <CategoryList title="Category List" /> */}
               {/* <CategoryList title={titleCategory} /> */}
