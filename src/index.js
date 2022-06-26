@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // ! reactstap'i npm install reactstrap" komutuyla kurduktan sonra index.js'e gelip alt satırdaki gibi import ediyoruz
 import "bootstrap/dist/css/bootstrap.min.css";
+import "alertifyjs/build/css/alertify.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

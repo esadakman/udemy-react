@@ -18,7 +18,10 @@ export default class CartSummary extends Component {
         </DropdownToggle>
         <DropdownMenu>
           {this.props.cart.map((cartItem) => (
-            <DropdownItem key={cartItem.product.id}>
+            <DropdownItem
+              key={cartItem.product.id}
+              // className="position-absolute  left-0"
+            >
               <Badge
                 color="danger"
                 onClick={() => this.props.removeFromCart(cartItem.product)}
@@ -30,7 +33,7 @@ export default class CartSummary extends Component {
             </DropdownItem>
           ))}
 
-          <DropdownItem divider />
+          {/* <DropdownItem divider /> */}
           <DropdownItem>Reset</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>

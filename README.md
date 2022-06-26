@@ -18,7 +18,8 @@
 - state : Bir component'in datasıdır.
 - reconciliation : Virtual DOM oluşturma sürecine verilen ad. Elementlerin component, prompts veya state'i değiştiğinde "tree"sini saklamaktan sorumlu.
 
-- Api ile çalışma
+### Api ile çalışma
+
 - https://github.com/typicode/json-server bu siteden fake rest api'yi çekiyoruz. Bunun için;
 - konsola => "npm install -g json-server " komutunu giriyoruz
 - ardından içinde data bulunan bir db.json dosyası oluturuyoruz
@@ -27,3 +28,9 @@
 - apimizin çalıştığı "http://localhost:3000/" adresine gidip "/" koyup kategori isimlerimizi yazarak gerekli bilgilere ulaşabiliriz.
 
 - datanın bit component'den altına ve ordanda onun altına geçmesi işlemine "Componet Drilling" denir.
+
+### Alertify Kurulum
+
+- Öncelikle boş bir terminale "npm install alertifyjs --save" yazıyoruz
+- 2. adım olarak index.js'de alertify'ı "import "alertifyjs/build/css/alertify.min.css";" diyerek css'i eklemiş oluyoruz
+- En sonda alertify'ı kullanacağımız yere gelip 'import alertify from "alertifyjs"' diyerek import ediyoruz ve kullanmaya başlıyoruz
