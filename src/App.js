@@ -8,11 +8,22 @@ import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 
 export default class App extends Component {
-  state = { currentCategory: "" };
+  state = { currentCategory: "", products: [] };
+
+  componentDidMount() {
+    this.getProducts();
+  }
 
   changeCategory = (category) => {
     this.setState({ currentCategory: category.categoryName });
   };
+
+  getProducts = () => {
+    fetch("http://localhost:3000/products")
+      .then((response) => response.json())
+      .then((data) => this.setState({ products: data }));
+  };
+
   render() {
     let productInfo = { title: "ProductList" };
     let categoryInfo = { title: "CategoryList" };
@@ -26,7 +37,7 @@ export default class App extends Component {
             <Navi />
           </Row>
           <Row>
-            <Col xs="6">
+            <Col xs="4">
               {/* //* Datamızı taşımak datayı taşıyacağımız yere gelip title veririz. (title yerine başka bir isimde verebiliriz fakat diğer tarafta aynı isimle çağırmamız gerekir)  */}
               {/* <CategoryList title="Category List" /> */}
               {/* <CategoryList title={titleCategory} /> */}
@@ -36,10 +47,11 @@ export default class App extends Component {
                 info={categoryInfo}
               />
             </Col>
-            <Col xs="6">
+            <Col xs="8">
               {/* <ProductList title="Product List" /> */}
               {/* <ProductList title={titleProduct} /> */}
               <ProductList
+                products={this.state.products}
                 currentCategory={this.state.currentCategory}
                 info={productInfo}
               />

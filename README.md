@@ -17,3 +17,11 @@
 - props : Bir componentten diğerine taşınan datadır
 - state : Bir component'in datasıdır.
 - reconciliation : Virtual DOM oluşturma sürecine verilen ad. Elementlerin component, prompts veya state'i değiştiğinde "tree"sini saklamaktan sorumlu.
+
+- Api ile çalışma
+- https://github.com/typicode/json-server bu siteden fake rest api'yi çekiyoruz. Bunun için;
+- konsola => "npm install -g json-server " komutunu giriyoruz
+- ardından içinde data bulunan bir db.json dosyası oluturuyoruz
+- son olarak ise db.josn dosyamızın olduğu konumda terminal açıp => "json-server --watch db.json" komutunu giriyoruz
+- api'miz 3000 portunda çalışıcağı için projemizden çıkıp yapı tekrardan başlatmamız gerekebilir.
+- apimizin çalıştığı "http://localhost:3000/" adresine gidip "/" koyup kategori isimlerimizi yazarak gerekli bilgilere ulaşabiliriz.
